@@ -1,49 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import Header from "./pages/Header";
+import { Routes, Route } from "react-router-dom";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
+
+import Home from "./pages/Home";
 import About from "./pages/About";
 import Skills from "./pages/Skills";
-import Home from "./pages/Home";
-import Footer from "./pages/Footer";
-import './App.css'
+import Project from "./pages/Project";
+import Contact from "./pages/Contact";
+
+import "./App.css";
 
 function App() {
-
   return (
     <>
-      <Header name="Vidhi Patel" color="#0ea5e9" />
-    <>
-      <section id="home">
-        <Home />
-      </section>
+      {/* Header */}
+      <Header
+        name="Vidhi Patel"
+        color="#0ea5e9"
+      />
 
-      <section id="about">
-        <About />
-      </section>
+      {/* Main Content */}
+      <main
+        style={{
+          background: "#0b0f19",
+          minHeight: "calc(100vh - 160px)",
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/projects" element={<Project />} />
+          <Route path="/contact" element={<Contact />} />
 
-      <section id="skills">
-        <Skills />
-      </section>
-    </>
+          {/* 404 Page */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
 
+      {/* Gradient Divider */}
       <div
         style={{
           height: "1px",
           width: "100%",
-          background:"linear-gradient(to right, transparent, #7C3AED, #EC4899, transparent)",
+          background:
+            "linear-gradient(to right, transparent, #7C3AED, #EC4899, transparent)",
         }}
-      ></div>
-      
-      <section id="contact">
-      <Footer
-          name="Vidhi Patel"
-          email="vidhipatel1796@gmail.com"
       />
-      </section>
+
+      {/* Footer */}
+      <Footer
+        name="Vidhi Patel"
+        email="vidhipatel1796@gmail.com"
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

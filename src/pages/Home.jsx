@@ -1,9 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <>
-      {/* CSS inside Home.jsx */}
       <style>{`
         .gradient-text {
           background: linear-gradient(135deg,#7C3AED,#EC4899);
@@ -13,16 +13,25 @@ function Home() {
           color: transparent;
           display: inline-block;
         }
+
+        .home-btn{
+          text-decoration:none;
+          border:2px solid #8b5cf6;
+          color:#fff;
+          padding:14px 32px;
+          border-radius:30px;
+          font-weight:600;
+          font-size:17px;
+        }
       `}</style>
 
       <section
-        id="home"
         style={{
-          minHeight: "75vh",
+          minHeight: "85vh",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "40px 10%",
+          padding: "50px 10%",
           background: "#0b0f19",
           color: "white",
         }}
@@ -31,16 +40,16 @@ function Home() {
         <div
           style={{
             flex: 1,
-            maxWidth: "55%",
+            maxWidth: "58%",
           }}
         >
           <p
             style={{
               color: "#c4b5fd",
-              fontSize: "13px",
+              fontSize: "16px",
               letterSpacing: "4px",
               fontWeight: "600",
-              marginBottom: "8px",
+              marginBottom: "10px",
             }}
           >
             HELLO THERE 👋
@@ -48,11 +57,10 @@ function Home() {
 
           <h1
             style={{
-              fontSize: "48px",
+              fontSize: "60px",
               margin: 0,
-              lineHeight: "1.2",
+              lineHeight: "1.15",
               fontWeight: "800",
-              color: "#f3f4f6",
             }}
           >
             I'm <span className="gradient-text">Vidhi Patel</span>
@@ -60,9 +68,9 @@ function Home() {
 
           <h2
             style={{
-              marginTop: "12px",
+              marginTop: "16px",
               color: "#fbbf24",
-              fontSize: "18px",
+              fontSize: "24px",
               fontWeight: "600",
             }}
           >
@@ -71,58 +79,43 @@ function Home() {
 
           <p
             style={{
-              marginTop: "20px",
+              marginTop: "28px",
               color: "#9ca3af",
-              fontSize: "15px",
-              lineHeight: "1.8",
-              maxWidth: "520px",
+              fontSize: "20px",
+              lineHeight: "1.9",
+              maxWidth: "650px",
             }}
           >
             Passionate about{" "}
-            <b style={{ color: "#ffffff" }}>Artificial Intelligence</b>,{" "}
-            <b style={{ color: "#ffffff" }}>Machine Learning</b>,{" "}
-            <b style={{ color: "#ffffff" }}>Web Technologies</b>, and{" "}
-            <b style={{ color: "#ffffff" }}>Problem Solving</b>. I enjoy
-            developing responsive web applications and continuously learning
-            modern technologies to solve real-world challenges.
+            <b style={{ color: "#ffffff" }}>Artificial Intelligence</b>,
+            <b style={{ color: "#ffffff" }}> Machine Learning</b>,
+            <b style={{ color: "#ffffff" }}> Web Development</b>, and
+            <b style={{ color: "#ffffff" }}> Problem Solving</b>. I enjoy
+            developing responsive web applications, building intelligent
+            solutions, and continuously learning modern technologies to solve
+            real-world challenges.
           </p>
 
+          {/* Buttons */}
           <div
             style={{
               display: "flex",
-              gap: "15px",
-              marginTop: "30px",
+              gap: "18px",
+              marginTop: "40px",
+              flexWrap: "wrap",
             }}
           >
-            <a
-              href="#about"
-              style={{
-                textDecoration: "none",
-                border: "2px solid #8b5cf6",
-                color: "#fff",
-                padding: "11px 25px",
-                borderRadius: "30px",
-                fontWeight: "600",
-                fontSize: "14px",
-              }}
-            >
+            <Link to="/about" className="home-btn">
               About Me
-            </a>
+            </Link>
 
-            <a
-              href="#skills"
-              style={{
-                textDecoration: "none",
-                border: "2px solid #8b5cf6",
-                color: "#fff",
-                padding: "11px 25px",
-                borderRadius: "30px",
-                fontWeight: "600",
-                fontSize: "14px",
-              }}
-            >
+            <Link to="/skills" className="home-btn">
               My Skills
-            </a>
+            </Link>
+
+            <Link to="/projects" className="home-btn">
+              My Projects
+            </Link>
           </div>
         </div>
 
@@ -137,8 +130,8 @@ function Home() {
         >
           <div
             style={{
-              width: "240px",
-              height: "240px",
+              width: "300px",
+              height: "300px",
               borderRadius: "50%",
               background: "linear-gradient(135deg,#7C3AED,#EC4899)",
               display: "flex",
@@ -150,9 +143,9 @@ function Home() {
             <span
               style={{
                 color: "#fff",
-                fontSize: "68px",
+                fontSize: "88px",
                 fontWeight: "800",
-                letterSpacing: "3px",
+                letterSpacing: "4px",
               }}
             >
               VP

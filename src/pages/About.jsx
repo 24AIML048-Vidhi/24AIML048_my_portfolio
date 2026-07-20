@@ -35,108 +35,133 @@ function About() {
   ];
 
   return (
-    <section
-      id="about"
-      style={{
-        background: "#0b0f19",
-        color: "white",
-        padding: "70px 8%",
-        scrollMarginTop: "90px",
-      }}
-    >
-      {/* Heading */}
-      <h2
-        style={{
-          textAlign: "center",
-          fontSize: "34px",
-          fontWeight: "700",
-          marginBottom: "30px",
-          background:
-            "linear-gradient(90deg, #c084fc, #ec4899, #fbbf24)",
-          WebkitBackgroundClip: "text",
-          backgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }}
-      >
-        About Me
-      </h2>
+    <>
+      <style>{`
+        .gradient-text {
+          background: linear-gradient(135deg, #7C3AED, #EC4899);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
+          display: inline-block;
+        }
+      `}</style>
 
-      {/* Content */}
-      <div
+      <section
+        id="about"
         style={{
-          maxWidth: "900px",
-          margin: "0 auto",
+          background: "#0b0f19",
+          color: "white",
+          padding: "70px 8%",
         }}
       >
-        {/* Introduction */}
-        <p
+        {/* Heading */}
+        <h2
           style={{
-            color: "#9ca3af",
-            fontSize: "16px",
-            lineHeight: "1.9",
+            textAlign: "center",
+            fontSize: "52px",
+            fontWeight: "800",
             marginBottom: "45px",
-            textAlign: "left",
           }}
         >
-          I'm{" "}
-          <span style={{ color: "#ffffff", fontWeight: "700" }}>
-            Vidhi Patel
-          </span>
-          , an enthusiastic{" "}
-          <span style={{ color: "#fbbf24", fontWeight: "600" }}>
-            AI & Machine Learning Engineering
-          </span>{" "}
-          student at{" "}
-          <span style={{ color: "#ffffff", fontWeight: "600" }}>
-            CHARUSAT University
-          </span>
-          . I enjoy building modern web applications, exploring Artificial
-          Intelligence, and solving real-world problems through technology.
-        </p>
+          <span className="gradient-text">About Me</span>
+        </h2>
 
-        {/* Information */}
-        <div>
-          {details.map((item, index) => (
-            <div
-              key={index}
+        {/* Content */}
+        <div
+          style={{
+            maxWidth: "1000px",
+            margin: "0 auto",
+          }}
+        >
+          {/* Introduction */}
+          <p
+            style={{
+              color: "#9ca3af",
+              fontSize: "22px",
+              lineHeight: "2",
+              marginBottom: "55px",
+              textAlign: "left",
+            }}
+          >
+            I'm{" "}
+            <span
               style={{
-                display: "grid",
-                gridTemplateColumns: "180px 1fr",
-                gap: "35px",
-                padding: "22px 0",
-                borderBottom:
-                  index !== details.length - 1
-                    ? "1px solid rgba(255,255,255,0.08)"
-                    : "none",
-                alignItems: "start",
+                color: "#ffffff",
+                fontWeight: "700",
               }}
             >
-              <h3
-                style={{
-                  margin: 0,
-                  color: "#c4b5fd",
-                  fontSize: "18px",
-                  fontWeight: "600",
-                }}
-              >
-                {item.title}
-              </h3>
+              Vidhi Patel
+            </span>
+            , an enthusiastic{" "}
+            <span
+              style={{
+                color: "#fbbf24",
+                fontWeight: "600",
+              }}
+            >
+              AI & Machine Learning Engineering
+            </span>{" "}
+            student at{" "}
+            <span
+              style={{
+                color: "#ffffff",
+                fontWeight: "600",
+              }}
+            >
+              CHARUSAT University
+            </span>
+            . I am passionate about developing intelligent solutions using
+            Artificial Intelligence and Machine Learning while also creating
+            modern, responsive web applications. I enjoy learning new
+            technologies, solving real-world problems, and continuously
+            improving my technical and analytical skills.
+          </p>
 
-              <p
+          {/* Information */}
+          <div>
+            {details.map((item, index) => (
+              <div
+                key={index}
                 style={{
-                  margin: 0,
-                  color: "#cbd5e1",
-                  fontSize: "16px",
-                  lineHeight: "1.8",
+                  display: "grid",
+                  gridTemplateColumns: "220px 1fr",
+                  gap: "45px",
+                  padding: "28px 0",
+                  borderBottom:
+                    index !== details.length - 1
+                      ? "1px solid rgba(255,255,255,0.08)"
+                      : "none",
+                  alignItems: "start",
                 }}
               >
-                {item.value}
-              </p>
-            </div>
-          ))}
+                <h3
+                  style={{
+                    margin: 0,
+                    color: "#c4b5fd",
+                    fontSize: "24px",
+                    fontWeight: "700",
+                  }}
+                >
+                  {item.title}
+                </h3>
+
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#cbd5e1",
+                    fontSize: "20px",
+                    lineHeight: "2",
+                  }}
+                >
+                  {item.value}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

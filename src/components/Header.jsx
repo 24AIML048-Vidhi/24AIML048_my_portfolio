@@ -1,8 +1,7 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 function Header({ name }) {
-  const navItems = ["Home", "About", "Skills", "Contact"];
-
   return (
     <header
       style={{
@@ -17,7 +16,7 @@ function Header({ name }) {
         boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
       }}
     >
-      {/* Left */}
+      {/* Left Section */}
       <div
         style={{
           display: "flex",
@@ -25,10 +24,11 @@ function Header({ name }) {
           gap: "12px",
         }}
       >
+        {/* Logo */}
         <div
           style={{
-            width: "40px",
-            height: "40px",
+            width: "42px",
+            height: "42px",
             borderRadius: "50%",
             background: "linear-gradient(135deg,#7C3AED,#EC4899)",
             display: "flex",
@@ -42,6 +42,7 @@ function Header({ name }) {
           VP
         </div>
 
+        {/* Name */}
         <div>
           <h2
             style={{
@@ -58,54 +59,18 @@ function Header({ name }) {
           <p
             style={{
               margin: "2px 0 0",
-              fontSize: "11px",
               color: "#7C3AED",
+              fontSize: "12px",
+              fontWeight: "500",
             }}
           >
-            AI & ML Engineering Student
+            AI & Machine Learning Engineering Student
           </p>
         </div>
       </div>
 
-      {/* Right */}
-      <nav>
-        <ul
-          style={{
-            display: "flex",
-            listStyle: "none",
-            gap: "8px",
-            margin: 0,
-            padding: 0,
-          }}
-        >
-          {navItems.map((item) => (
-            <li key={item}>
-              <a
-                href={`#${item.toLowerCase()}`}
-                style={{
-                  textDecoration: "none",
-                  color: "#374151",
-                  fontWeight: "600",
-                  fontSize: "14px",
-                  padding: "8px 14px",
-                  borderRadius: "20px",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = "#7C3AED";
-                  e.target.style.color = "white";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = "transparent";
-                  e.target.style.color = "#374151";
-                }}
-              >
-                {item}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {/* Right Section */}
+      <Navbar />
     </header>
   );
 }

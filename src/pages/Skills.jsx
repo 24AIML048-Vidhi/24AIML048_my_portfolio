@@ -9,60 +9,88 @@ function Skills() {
     "Web Technologies",
     "DBMS",
     "SQL",
-    "DSA",
-    "DAA",
+    "Data Structures & Algorithms",
+    "Design & Analysis of Algorithms",
   ];
 
   return (
     <section
-      id="skills"
       style={{
         background: "#0b0f19",
         color: "white",
-        padding: "70px 8%",
-        scrollMarginTop: "90px",
+        padding: "50px 8% 80px",
+        minHeight: "calc(100vh - 80px)",
       }}
     >
+      <style>{`
+        .gradient-text{
+          background: linear-gradient(135deg,#7C3AED,#EC4899);
+          -webkit-background-clip:text;
+          background-clip:text;
+          -webkit-text-fill-color:transparent;
+          display:inline-block;
+        }
+
+        .skill-badge{
+          padding:14px 26px;
+          border:2px solid #8b5cf6;
+          border-radius:30px;
+          background:#111827;
+          color:#ffffff;
+          font-size:17px;
+          font-weight:600;
+        }
+      `}</style>
+
       {/* Heading */}
-      <h2
+      <h1
         style={{
           textAlign: "center",
-          fontSize: "34px",
-          fontWeight: "700",
-          marginBottom: "40px",
-          background: "linear-gradient(90deg, #c084fc, #ec4899, #fbbf24)",
-          WebkitBackgroundClip: "text",
-          backgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          fontSize: "52px",
+          fontWeight: "800",
+          margin: "0 0 45px",
         }}
       >
-        My Skills
-      </h2>
+        <span className="gradient-text">My Skills</span>
+      </h1>
 
       {/* Skills */}
       <div
         style={{
-          maxWidth: "900px",
+          maxWidth: "1000px",
           margin: "0 auto",
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          alignItems: "center",
-          gap: "14px",
-          fontSize: "18px",
-          color: "#e2e8f0",
-          lineHeight: "1.8",
+          gap: "18px",
         }}
       >
         {skills.map((skill, index) => (
-          <React.Fragment key={index}>
-            <span>{skill}</span>
-            {index !== skills.length - 1 && (
-              <span style={{ color: "#8b5cf6" }}>•</span>
-            )}
-          </React.Fragment>
+          <span className="skill-badge" key={index}>
+            {skill}
+          </span>
         ))}
       </div>
+
+      {/* Description */}
+      <p
+        style={{
+          color: "#cbd5e1",
+          textAlign: "center",
+          marginTop: "55px",
+          fontSize: "22px",
+          lineHeight: "1.9",
+          maxWidth: "900px",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
+        I enjoy working with <strong>Artificial Intelligence</strong>,
+        <strong> Machine Learning</strong>, <strong>Web Development</strong>,
+        and <strong>Problem Solving</strong>. I continuously improve my
+        programming, analytical, and technical skills by building real-world
+        projects, solving coding problems, and exploring modern technologies.
+      </p>
     </section>
   );
 }
