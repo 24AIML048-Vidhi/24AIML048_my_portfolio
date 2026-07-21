@@ -1,6 +1,6 @@
 import React from "react";
 
-function Skills() {
+function Skills({ theme }) {
   const skills = [
     "Python",
     "C++",
@@ -16,10 +16,11 @@ function Skills() {
   return (
     <section
       style={{
-        background: "#0b0f19",
-        color: "white",
+        background: theme.background,
+        color: theme.text,
         padding: "50px 8% 80px",
         minHeight: "calc(100vh - 80px)",
+        transition: "0.3s",
       }}
     >
       <style>{`
@@ -33,12 +34,21 @@ function Skills() {
 
         .skill-badge{
           padding:14px 26px;
-          border:2px solid #8b5cf6;
+          border:2px solid ${theme.accent};
           border-radius:30px;
-          background:#111827;
-          color:#ffffff;
+          background:${theme.card};
+          color:${theme.text};
           font-size:17px;
           font-weight:600;
+          transition:0.3s;
+          box-shadow:${theme.shadow};
+        }
+
+        .skill-badge:hover{
+          background:${theme.accent};
+          color:#ffffff;
+          transform:translateY(-3px);
+          cursor:pointer;
         }
       `}</style>
 
@@ -75,7 +85,7 @@ function Skills() {
       {/* Description */}
       <p
         style={{
-          color: "#cbd5e1",
+          color: theme.textSecondary,
           textAlign: "center",
           marginTop: "55px",
           fontSize: "22px",
@@ -83,13 +93,28 @@ function Skills() {
           maxWidth: "900px",
           marginLeft: "auto",
           marginRight: "auto",
+          transition: "0.3s",
         }}
       >
-        I enjoy working with <strong>Artificial Intelligence</strong>,
-        <strong> Machine Learning</strong>, <strong>Web Development</strong>,
-        and <strong>Problem Solving</strong>. I continuously improve my
-        programming, analytical, and technical skills by building real-world
-        projects, solving coding problems, and exploring modern technologies.
+        I enjoy working with{" "}
+        <strong style={{ color: theme.text }}>
+          Artificial Intelligence
+        </strong>
+        ,
+        <strong style={{ color: theme.text }}>
+          {" "}Machine Learning
+        </strong>
+        ,
+        <strong style={{ color: theme.text }}>
+          {" "}Web Development
+        </strong>
+        , and{" "}
+        <strong style={{ color: theme.text }}>
+          Problem Solving
+        </strong>
+        . I continuously improve my programming, analytical, and technical
+        skills by building real-world projects, solving coding problems, and
+        exploring modern technologies.
       </p>
     </section>
   );

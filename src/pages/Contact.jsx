@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Contact() {
+function Contact({ theme }) {
   const [message, setMessage] = useState("");
 
   const sendMessage = () => {
@@ -15,37 +15,50 @@ function Contact() {
     window.location.href = `mailto:vidhipatel1796@gmail.com?subject=${subject}&body=${body}`;
   };
 
+  const linkStyle = {
+    textDecoration: "none",
+    border: "2px solid #8b5cf6",
+    color: theme.text,
+    padding: "11px 25px",
+    borderRadius: "30px",
+    fontWeight: "600",
+    fontSize: "14px",
+    background: "transparent",
+    transition: "0.3s",
+  };
+
   return (
     <>
       <style>{`
         .gradient-text {
           background: linear-gradient(135deg,#7C3AED,#EC4899);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          color: transparent;
-          display: inline-block;
+          -webkit-background-clip:text;
+          background-clip:text;
+          -webkit-text-fill-color:transparent;
+          display:inline-block;
         }
 
         .contact-btn{
-          transition: all .3s ease;
+          transition:all .3s ease;
         }
 
         .contact-btn:hover{
           background:#8b5cf6;
-          transform: translateY(-2px);
+          color:white !important;
+          transform:translateY(-2px);
         }
       `}</style>
 
       <section
         style={{
           minHeight: "100vh",
-          background: "#0b0f19",
-          color: "white",
+          background: theme.background,
+          color: theme.text,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           padding: "50px 8%",
+          transition: "0.3s",
         }}
       >
         <div
@@ -54,8 +67,6 @@ function Contact() {
             maxWidth: "950px",
           }}
         >
-          {/* CONTACT */}
-
           {/* Heading */}
           <h1
             style={{
@@ -71,7 +82,7 @@ function Contact() {
           {/* Description */}
           <p
             style={{
-              color: "#9ca3af",
+              color: theme.textSecondary,
               fontSize: "17px",
               lineHeight: "1.8",
               textAlign: "center",
@@ -85,7 +96,7 @@ function Contact() {
             below.
           </p>
 
-          {/* Message */}
+          {/* Message Box */}
           <div
             style={{
               maxWidth: "900px",
@@ -114,19 +125,20 @@ function Contact() {
                 height: "110px",
                 padding: "16px",
                 borderRadius: "12px",
-                border: "1px solid #334155",
-                background: "#1e293b",
-                color: "white",
+                border: `1px solid ${theme.border}`,
+                background: theme.card,
+                color: theme.text,
                 fontSize: "16px",
                 resize: "none",
                 outline: "none",
                 boxSizing: "border-box",
+                transition: "0.3s",
               }}
             />
 
             <p
               style={{
-                color: "#9ca3af",
+                color: theme.textSecondary,
                 fontSize: "14px",
                 textAlign: "right",
                 marginTop: "8px",
@@ -148,7 +160,7 @@ function Contact() {
                 onClick={sendMessage}
                 style={{
                   border: "2px solid #8b5cf6",
-                  color: "#fff",
+                  color: theme.text,
                   padding: "11px 26px",
                   borderRadius: "30px",
                   fontWeight: "600",
@@ -162,7 +174,7 @@ function Contact() {
             </div>
           </div>
 
-          {/* Contact Buttons */}
+          {/* Contact Links */}
           <div
             style={{
               display: "flex",
@@ -205,16 +217,5 @@ function Contact() {
     </>
   );
 }
-
-const linkStyle = {
-  textDecoration: "none",
-  border: "2px solid #8b5cf6",
-  color: "#fff",
-  padding: "11px 25px",
-  borderRadius: "30px",
-  fontWeight: "600",
-  fontSize: "14px",
-  background: "transparent",
-};
 
 export default Contact;

@@ -1,28 +1,41 @@
 import React from "react";
 
-function Footer({ name, email }) {
+function Footer({ name, email, theme }) {
   return (
     <>
       <style>{`
         .gradient-text{
-          background: linear-gradient(135deg,#7C3AED,#EC4899);
+          background:linear-gradient(135deg,#7C3AED,#EC4899);
           -webkit-background-clip:text;
           background-clip:text;
           -webkit-text-fill-color:transparent;
-          color:transparent;
           display:inline-block;
+        }
+
+        .footer-link{
+          color:inherit;
+          text-decoration:none;
+          font-weight:600;
+          font-size:18px;
+          transition:.3s;
+        }
+
+        .footer-link:hover{
+          color:#8b5cf6;
         }
       `}</style>
 
       <footer
         style={{
-          background: "#0b0f19",
-          color: "white",
+          background: theme.background,
+          color: theme.text,
           padding: "35px 20px",
           textAlign: "center",
-          borderTop: "1px solid #1e293b",
+          borderTop: `1px solid ${theme.border}`,
+          transition: "0.3s",
         }}
       >
+        {/* Heading */}
         <h2
           style={{
             margin: 0,
@@ -30,24 +43,31 @@ function Footer({ name, email }) {
             fontWeight: "800",
           }}
         >
-          <span className="gradient-text">Thank You for Visiting!</span>
+          <span className="gradient-text">
+            Thank You for Visiting!
+          </span>
         </h2>
 
+        {/* Name */}
         <p
           style={{
             marginTop: "18px",
-            color: "#cbd5e1",
+            color: theme.textSecondary,
             fontSize: "20px",
             lineHeight: "1.8",
           }}
         >
-          Designed & Developed by <strong>{name}</strong>
+          Designed & Developed by{" "}
+          <strong style={{ color: theme.text }}>
+            {name}
+          </strong>
         </p>
 
+        {/* Email */}
         <p
           style={{
             marginTop: "8px",
-            color: "#94a3b8",
+            color: theme.textSecondary,
             fontSize: "18px",
           }}
         >
@@ -68,12 +88,7 @@ function Footer({ name, email }) {
             href="https://github.com/24AIML048-Vidhi"
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              color: "#cbd5e1",
-              textDecoration: "none",
-              fontWeight: "600",
-              fontSize: "18px",
-            }}
+            className="footer-link"
           >
             GitHub
           </a>
@@ -82,41 +97,33 @@ function Footer({ name, email }) {
             href="https://www.linkedin.com/in/vidhi-patel-b38ba4317/"
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              color: "#cbd5e1",
-              textDecoration: "none",
-              fontWeight: "600",
-              fontSize: "18px",
-            }}
+            className="footer-link"
           >
             LinkedIn
           </a>
 
           <a
             href={`mailto:${email}`}
-            style={{
-              color: "#cbd5e1",
-              textDecoration: "none",
-              fontWeight: "600",
-              fontSize: "18px",
-            }}
+            className="footer-link"
           >
             Email
           </a>
         </div>
 
+        {/* Divider */}
         <hr
           style={{
             width: "75%",
             border: "none",
-            borderTop: "1px solid #334155",
+            borderTop: `1px solid ${theme.border}`,
             margin: "25px auto",
           }}
         />
 
+        {/* Copyright */}
         <p
           style={{
-            color: "#94a3b8",
+            color: theme.textSecondary,
             fontSize: "17px",
             margin: "0 0 8px",
           }}
@@ -126,7 +133,7 @@ function Footer({ name, email }) {
 
         <p
           style={{
-            color: "#64748b",
+            color: theme.textSecondary,
             fontSize: "16px",
             margin: 0,
           }}

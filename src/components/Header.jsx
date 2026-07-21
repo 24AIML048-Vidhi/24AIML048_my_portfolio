@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 
-function Header({ name }) {
+function Header({ name, darkMode, setDarkMode }) {
   return (
     <header
       style={{
@@ -12,8 +12,15 @@ function Header({ name }) {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "10px 8%",
-        background: "#FFFFFF",
-        boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+        background: darkMode ? "#111827" : "#ffffff",
+        color: darkMode ? "#ffffff" : "#111827",
+        borderBottom: darkMode
+          ? "1px solid #1e293b"
+          : "1px solid #e5e7eb",
+        boxShadow: darkMode
+          ? "0 2px 15px rgba(0,0,0,.35)"
+          : "0 2px 15px rgba(0,0,0,.08)",
+        transition: "all .3s ease",
       }}
     >
       {/* Left Section */}
@@ -34,9 +41,9 @@ function Header({ name }) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            color: "white",
+            color: "#fff",
             fontSize: "16px",
-            fontWeight: "bold",
+            fontWeight: "700",
           }}
         >
           VP
@@ -47,10 +54,9 @@ function Header({ name }) {
           <h2
             style={{
               margin: 0,
-              color: "#1F2937",
+              color: darkMode ? "#ffffff" : "#111827",
               fontSize: "22px",
               fontWeight: "700",
-              lineHeight: "1.2",
             }}
           >
             {name}
@@ -58,10 +64,10 @@ function Header({ name }) {
 
           <p
             style={{
-              margin: "2px 0 0",
-              color: "#7C3AED",
+              margin: "3px 0 0",
+              color: darkMode ? "#c4b5fd" : "#7c3aed",
               fontSize: "12px",
-              fontWeight: "500",
+              fontWeight: "600",
             }}
           >
             AI & Machine Learning Engineering Student
@@ -70,7 +76,35 @@ function Header({ name }) {
       </div>
 
       {/* Right Section */}
-      <Navbar />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "20px",
+        }}
+      >
+        <Navbar darkMode={darkMode} />
+
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          style={{
+            padding: "10px 18px",
+            borderRadius: "30px",
+            border: "none",
+            cursor: "pointer",
+            fontWeight: "700",
+            fontSize: "14px",
+            background: darkMode
+              ? "#facc15"
+              : "linear-gradient(135deg,#7C3AED,#EC4899)",
+            color: "#ffffff",
+            transition: ".3s",
+            boxShadow: "0 4px 12px rgba(0,0,0,.15)",
+          }}
+        >
+          {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+        </button>
+      </div>
     </header>
   );
 }

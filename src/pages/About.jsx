@@ -1,6 +1,6 @@
 import React from "react";
 
-function About() {
+function About({ theme }) {
   const details = [
     {
       title: "Education",
@@ -38,21 +38,23 @@ function About() {
     <>
       <style>{`
         .gradient-text {
-          background: linear-gradient(135deg, #7C3AED, #EC4899);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          color: transparent;
-          display: inline-block;
+          background: linear-gradient(135deg,#7C3AED,#EC4899);
+          -webkit-background-clip:text;
+          background-clip:text;
+          -webkit-text-fill-color:transparent;
+          color:transparent;
+          display:inline-block;
         }
       `}</style>
 
       <section
         id="about"
         style={{
-          background: "#0b0f19",
-          color: "white",
+          background: theme.background,
+          color: theme.text,
           padding: "70px 8%",
+          transition: "0.3s",
+          minHeight: "100vh",
         }}
       >
         {/* Heading */}
@@ -77,17 +79,16 @@ function About() {
           {/* Introduction */}
           <p
             style={{
-              color: "#9ca3af",
+              color: theme.textSecondary,
               fontSize: "22px",
               lineHeight: "2",
               marginBottom: "55px",
-              textAlign: "left",
             }}
           >
             I'm{" "}
             <span
               style={{
-                color: "#ffffff",
+                color: theme.text,
                 fontWeight: "700",
               }}
             >
@@ -96,7 +97,7 @@ function About() {
             , an enthusiastic{" "}
             <span
               style={{
-                color: "#fbbf24",
+                color: theme.warning,
                 fontWeight: "600",
               }}
             >
@@ -105,7 +106,7 @@ function About() {
             student at{" "}
             <span
               style={{
-                color: "#ffffff",
+                color: theme.text,
                 fontWeight: "600",
               }}
             >
@@ -118,7 +119,7 @@ function About() {
             improving my technical and analytical skills.
           </p>
 
-          {/* Information */}
+          {/* Details */}
           <div>
             {details.map((item, index) => (
               <div
@@ -130,7 +131,7 @@ function About() {
                   padding: "28px 0",
                   borderBottom:
                     index !== details.length - 1
-                      ? "1px solid rgba(255,255,255,0.08)"
+                      ? `1px solid ${theme.border}`
                       : "none",
                   alignItems: "start",
                 }}
@@ -138,7 +139,7 @@ function About() {
                 <h3
                   style={{
                     margin: 0,
-                    color: "#c4b5fd",
+                    color: theme.accent,
                     fontSize: "24px",
                     fontWeight: "700",
                   }}
@@ -149,7 +150,7 @@ function About() {
                 <p
                   style={{
                     margin: 0,
-                    color: "#cbd5e1",
+                    color: theme.textSecondary,
                     fontSize: "20px",
                     lineHeight: "2",
                   }}
