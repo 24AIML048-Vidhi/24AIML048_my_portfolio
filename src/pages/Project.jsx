@@ -6,12 +6,9 @@ function Projects({ theme }) {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
-
-  // =========================================================
-  // FETCH GENERATED PROJECT DATA
-  // =========================================================
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -20,24 +17,18 @@ function Projects({ theme }) {
         setError(null);
 
         const response = await fetch(
-          "/projects.json"
+          `${import.meta.env.BASE_URL}projects.json`
         );
 
         if (!response.ok) {
           throw new Error(
-            "Failed to load projects."
+            `Failed to load projects.json (${response.status})`
           );
         }
 
         const data = await response.json();
 
-        if (!data.projects) {
-          throw new Error(
-            "Invalid projects data."
-          );
-        }
-
-        setRepos(data.projects);
+        setRepos(data.projects || []);
       } catch (err) {
         console.error(err);
         setError(err.message);
@@ -49,105 +40,56 @@ function Projects({ theme }) {
     fetchProjects();
   }, []);
 
-  // =========================================================
-  // LOADING
-  // =========================================================
-
   if (loading) {
     return <Spinner />;
   }
 
-  // =========================================================
-  // ERROR
-  // =========================================================
-
   if (error) {
-    return (
-      <div
-        style={{
-          background: theme.background,
-          minHeight: "100vh",
-          padding: "100px 8%",
-        }}
-      >
-        <ErrorMessage message={error} />
-      </div>
-    );
+    return <ErrorMessage message={error} />;
   }
 
-  // =========================================================
-  // SEARCH + FILTER
-  // =========================================================
-
   const filteredRepos = repos.filter((repo) => {
-    const searchText =
-      search.toLowerCase();
+    // -----------------------------
+    // FILTER TYPE
+    // -----------------------------
+
+    const matchesFilter =
+      filter === "all"
+        ? true
+        : filter === "my"
+        ? repo.projectType === "personal"
+        : repo.projectType === "collaboration";
+
+    // -----------------------------
+    // SEARCH
+    // -----------------------------
+
+    const searchText = search.toLowerCase();
 
     const matchesSearch =
-      repo.name
-        ?.toLowerCase()
-        .includes(searchText) ||
-      repo.full_name
-        ?.toLowerCase()
-        .includes(searchText) ||
+      repo.name?.toLowerCase().includes(searchText) ||
       repo.description
         ?.toLowerCase()
         .includes(searchText) ||
       repo.owner
         ?.toLowerCase()
-        .includes(searchText);
+        .includes(searchText) ||
+      repo.languages?.some((language) =>
+        language.toLowerCase().includes(searchText)
+      );
 
-    const matchesFilter =
-      filter === "all" ||
-      repo.projectType === filter;
-
-    return (
-      matchesSearch &&
-      matchesFilter
-    );
+    return matchesFilter && matchesSearch;
   });
 
-  // =========================================================
-  // COUNTS
-  // =========================================================
-
-  const totalCount = repos.length;
-
-  const myCount = repos.filter(
+  const personalCount = repos.filter(
     (repo) =>
       repo.projectType === "personal"
   ).length;
 
-  const collabCount = repos.filter(
+  const collaborationCount = repos.filter(
     (repo) =>
       repo.projectType === "collaboration"
   ).length;
-
-  // =========================================================
-  // BUTTON STYLE
-  // =========================================================
-
-  const getFilterStyle = (type) => ({
-    padding: "10px 22px",
-    borderRadius: "25px",
-    border: `1px solid ${theme.border}`,
-    cursor: "pointer",
-    fontSize: "15px",
-    fontWeight: "600",
-    background:
-      filter === type
-        ? "#8b5cf6"
-        : theme.card,
-    color:
-      filter === type
-        ? "#ffffff"
-        : theme.text,
-    transition: "0.3s",
-  });
-
-  // =========================================================
-  // UI
-  // =========================================================
 
   return (
     <section
@@ -179,7 +121,6 @@ function Projects({ theme }) {
             padding: 25px;
             margin-bottom: 25px;
             transition: .3s;
-
             box-shadow: ${
               theme.background === "#0b0f19"
                 ? "0 8px 20px rgba(0,0,0,.35)"
@@ -195,20 +136,13 @@ function Projects({ theme }) {
             width: 100%;
             max-width: 500px;
             display: block;
-            margin: 0 auto 20px;
-
+            margin: 0 auto 25px;
             padding: 12px 18px;
-
             border-radius: 10px;
-
             border: 1px solid ${theme.border};
-
             outline: none;
-
             font-size: 16px;
-
             background: ${theme.card};
-
             color: ${theme.text};
           }
 
@@ -219,144 +153,82 @@ function Projects({ theme }) {
           .filter-container {
             display: flex;
             justify-content: center;
-            align-items: center;
-
-            gap: 10px;
-
             flex-wrap: wrap;
-
+            gap: 10px;
             margin-bottom: 35px;
+          }
+
+          .filter-button {
+            padding: 10px 22px;
+            border-radius: 25px;
+            border: 1px solid ${theme.border};
+            background: ${theme.card};
+            color: ${theme.text};
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: .3s;
           }
 
           .filter-button:hover {
             transform: translateY(-2px);
           }
 
-          .project-type {
-            display: inline-block;
-
-            margin-left: 10px;
-
-            padding: 5px 12px;
-
-            border-radius: 20px;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            border: 1px solid ${theme.border};
-          }
-
-          .owner-info {
-            color: ${theme.textSecondary};
-
-            font-size: 14px;
-
-            margin-top: 8px;
-          }
-
-          .description {
-            color: ${theme.textSecondary};
-
-            line-height: 1.8;
-
-            margin-top: 12px;
-
-            font-size: 17px;
-          }
-
-          .lang-container {
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 8px;
-
-            margin-top: 18px;
-          }
-
-          .badge {
-            background: ${theme.background};
-
-            border: 1px solid ${theme.border};
-
-            color: ${
-              theme.background === "#0b0f19"
-                ? "#c4b5fd"
-                : "#6d28d9"
-            };
-
-            padding: 6px 14px;
-
-            border-radius: 20px;
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            transition: .3s;
-          }
-
-          .badge:hover {
-            background: #8b5cf6;
-
+          .filter-button.active {
+            background: #7c3aed;
             color: white;
-          }
-
-          .stats {
-            display: flex;
-
-            gap: 15px;
-
-            flex-wrap: wrap;
-
-            margin-top: 15px;
+            border-color: #7c3aed;
           }
 
           .repo-link {
             display: inline-block;
-
             margin-top: 20px;
-
             color: ${
               theme.background === "#0b0f19"
                 ? "#8b5cf6"
                 : "#6d28d9"
             };
-
             font-weight: bold;
-
             text-decoration: none;
-
-            transition: .3s;
           }
 
-          .repo-link:hover {
+          .badge {
+            background: ${theme.background};
+            border: 1px solid ${theme.border};
             color: ${
               theme.background === "#0b0f19"
                 ? "#c4b5fd"
-                : "#4c1d95"
+                : "#6d28d9"
             };
-          }
-
-          .github-owner-link {
-            color: inherit;
-
-            text-decoration: none;
-
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
             font-weight: 600;
           }
 
-          .github-owner-link:hover {
-            text-decoration: underline;
+          .lang-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+          }
+
+          .stats {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+          }
+
+          .collab-owner {
+            margin-top: 10px;
+            font-size: 15px;
+            color: ${theme.textSecondary};
           }
         `}
       </style>
 
-      {/* =====================================================
-          TITLE
-      ===================================================== */}
+      {/* TITLE */}
 
       <h1
         style={{
@@ -370,76 +242,74 @@ function Projects({ theme }) {
         </span>
       </h1>
 
-      {/* =====================================================
-          SEARCH
-      ===================================================== */}
+      {/* SEARCH */}
 
       <input
         className="search-box"
         type="text"
-        placeholder="Search Repository or Owner..."
+        placeholder="Search Repository, Owner, Language..."
         value={search}
         onChange={(e) =>
           setSearch(e.target.value)
         }
       />
 
-      {/* =====================================================
-          FILTER BUTTONS
-      ===================================================== */}
+      {/* FILTER BUTTONS */}
 
       <div className="filter-container">
+
         <button
-          className="filter-button"
-          style={getFilterStyle("all")}
+          className={`filter-button ${
+            filter === "all"
+              ? "active"
+              : ""
+          }`}
           onClick={() =>
             setFilter("all")
           }
         >
-          All
+          All ({repos.length})
         </button>
 
         <button
-          className="filter-button"
-          style={getFilterStyle("personal")}
+          className={`filter-button ${
+            filter === "my"
+              ? "active"
+              : ""
+          }`}
           onClick={() =>
-            setFilter("personal")
+            setFilter("my")
           }
         >
-          My
+          My ({personalCount})
         </button>
 
         <button
-          className="filter-button"
-          style={getFilterStyle("collaboration")}
+          className={`filter-button ${
+            filter === "collab"
+              ? "active"
+              : ""
+          }`}
           onClick={() =>
-            setFilter("collaboration")
+            setFilter("collab")
           }
         >
-          Collab
+          Collab ({collaborationCount})
         </button>
+
       </div>
 
-      {/* =====================================================
-          COUNTS
-      ===================================================== */}
+      {/* COUNTS */}
 
       <div
         style={{
           maxWidth: "1000px",
           margin: "0 auto 30px",
-
           display: "flex",
-
-          justifyContent:
-            "space-between",
-
+          justifyContent: "space-between",
           flexWrap: "wrap",
-
           color: theme.textSecondary,
-
           fontSize: "17px",
-
           fontWeight: "600",
         }}
       >
@@ -450,33 +320,9 @@ function Projects({ theme }) {
               color: theme.text,
             }}
           >
-            Total:
+            Repositories:
           </strong>{" "}
-          {totalCount}
-        </p>
-
-        <p>
-          👤{" "}
-          <strong
-            style={{
-              color: theme.text,
-            }}
-          >
-            My:
-          </strong>{" "}
-          {myCount}
-        </p>
-
-        <p>
-          🤝{" "}
-          <strong
-            style={{
-              color: theme.text,
-            }}
-          >
-            Collab:
-          </strong>{" "}
-          {collabCount}
+          {repos.length}
         </p>
 
         <p>
@@ -492,9 +338,7 @@ function Projects({ theme }) {
         </p>
       </div>
 
-      {/* =====================================================
-          PROJECT LIST
-      ===================================================== */}
+      {/* PROJECT LIST */}
 
       <div
         style={{
@@ -502,102 +346,92 @@ function Projects({ theme }) {
           margin: "0 auto",
         }}
       >
+
         {filteredRepos.length === 0 ? (
-          <h3
+
+          <div
             style={{
               textAlign: "center",
+              padding: "50px 20px",
               color: theme.textSecondary,
             }}
           >
-            No repositories found.
-          </h3>
+            <h3>
+              No repositories found.
+            </h3>
+
+            {filter === "collab" && (
+              <p>
+                No collaboration repositories
+                were detected yet.
+              </p>
+            )}
+          </div>
+
         ) : (
+
           filteredRepos.map((repo) => (
+
             <div
               className="project-card"
-              key={repo.full_name}
+              key={repo.id || repo.full_name}
             >
-              {/* =================================================
-                  NAME
-              ================================================= */}
+
+              {/* NAME */}
 
               <h2 className="gradient-text">
                 {repo.name}
-
-                <span
-                  className="project-type"
-                  style={{
-                    color:
-                      repo.projectType ===
-                      "collaboration"
-                        ? "#ec4899"
-                        : "#8b5cf6",
-                  }}
-                >
-                  {repo.projectType ===
-                  "collaboration"
-                    ? "🤝 Collab"
-                    : "👤 My Project"}
-                </span>
               </h2>
 
-              {/* =================================================
-                  OWNER
-              ================================================= */}
+              {/* TYPE */}
 
-              <p className="owner-info">
-                {repo.projectType ===
-                "collaboration"
-                  ? "🤝 Collaborated with: "
-                  : "👤 Owner: "}
+              <div
+                style={{
+                  marginTop: "10px",
+                }}
+              >
+                <span className="badge">
+                  {repo.projectType ===
+                  "collaboration"
+                    ? "🤝 Collaboration"
+                    : "👤 My Project"}
+                </span>
+              </div>
 
-                {repo.owner_url ? (
-                  <a
-                    href={repo.owner_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="github-owner-link"
-                  >
-                    {repo.owner}
-                  </a>
-                ) : (
-                  repo.owner
+              {/* OWNER */}
+
+              {repo.projectType ===
+                "collaboration" &&
+                repo.owner && (
+                  <p className="collab-owner">
+                    👥 Collaborated with{" "}
+                    <strong>
+                      {repo.owner}
+                    </strong>
+                  </p>
                 )}
-              </p>
 
-              {/* =================================================
-                  REPOSITORY NAME
-              ================================================= */}
+              {/* DESCRIPTION */}
 
               <p
                 style={{
                   color:
                     theme.textSecondary,
-
-                  fontSize: "13px",
-
-                  marginTop: "5px",
+                  lineHeight: "1.8",
+                  marginTop: "12px",
+                  fontSize: "17px",
                 }}
               >
-                {repo.full_name}
-              </p>
-
-              {/* =================================================
-                  DESCRIPTION
-              ================================================= */}
-
-              <p className="description">
                 {repo.description ||
                   "No description available."}
               </p>
 
-              {/* =================================================
-                  LANGUAGES
-              ================================================= */}
+              {/* LANGUAGES */}
 
               <div className="lang-container">
-                {repo.languages &&
-                repo.languages.length > 0 ? (
+
+                {repo.languages?.length > 0 ? (
+
                   repo.languages.map(
                     (language) => (
                       <span
@@ -608,38 +442,40 @@ function Projects({ theme }) {
                       </span>
                     )
                   )
+
                 ) : (
+
                   <span className="badge">
                     💻 Unknown
                   </span>
+
                 )}
+
               </div>
 
-              {/* =================================================
-                  STATS
-              ================================================= */}
+              {/* STATS */}
 
               <div className="stats">
+
                 <span className="badge">
-                  ⭐ {repo.stars} Stars
+                  ⭐ {repo.stars || 0} Stars
                 </span>
 
                 <span className="badge">
-                  🍴 {repo.forks} Forks
+                  🍴 {repo.forks || 0} Forks
                 </span>
 
                 <span className="badge">
-                  👀 {repo.watchers} Watchers
+                  👀 {repo.watchers || 0} Watchers
                 </span>
 
                 <span className="badge">
-                  🐞 {repo.issues} Issues
+                  🐞 {repo.issues || 0} Issues
                 </span>
+
               </div>
 
-              {/* =================================================
-                  GITHUB LINK
-              ================================================= */}
+              {/* LINK */}
 
               <a
                 href={repo.html_url}
@@ -649,9 +485,13 @@ function Projects({ theme }) {
               >
                 🔗 View Repository →
               </a>
+
             </div>
+
           ))
+
         )}
+
       </div>
     </section>
   );

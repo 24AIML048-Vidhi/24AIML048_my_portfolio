@@ -5,6 +5,7 @@ import urllib.request
 import urllib.error
 from datetime import datetime, timezone
 
+
 USERNAME = os.environ["GITHUB_USERNAME"]
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 
@@ -35,19 +36,16 @@ def github_get(url):
     except urllib.error.HTTPError as error:
         body = error.read().decode("utf-8")
 
-        print(
-            f"GitHub API error {error.code}:"
-        )
+        print(f"\nGitHub API Error: {error.code}")
         print(body)
-
         raise
 
 
-def get_all_pages(url):
+def get_all_pages(url, max_pages=10):
     results = []
-    page = 1
 
-    while True:
+    for page in range(1, max_pages + 1):
+
         separator = "&" if "?" in url else "?"
 
         page_url = (
@@ -66,27 +64,25 @@ def get_all_pages(url):
         if len(data) < 100:
             break
 
-        page += 1
-
     return results
 
 
 # ============================================================
-# GET YOUR PUBLIC REPOSITORIES
+# MY REPOSITORIES
 # ============================================================
 
 def get_my_repositories():
 
     print(
-        f"Fetching public repositories "
-        f"for {USERNAME}..."
+        f"\nFetching repositories owned by {USERNAME}..."
     )
+
+    encoded_username = urllib.parse.quote(USERNAME)
 
     url = (
         f"{API_BASE}/users/"
-        f"{urllib.parse.quote(USERNAME)}"
-        f"/repos"
-        f"?type=all"
+        f"{encoded_username}/repos"
+        f"?type=owner"
         f"&sort=updated"
     )
 
@@ -94,18 +90,18 @@ def get_my_repositories():
 
 
 # ============================================================
-# FIND REPOSITORIES WHERE YOU MADE COMMITS
+# SEARCH COMMITS
 # ============================================================
 
-def get_collaboration_repositories():
+def search_commits(query):
 
     print(
-        f"Searching commits by {USERNAME}..."
+        f"\nSearching GitHub commits:"
     )
 
-    encoded_username = urllib.parse.quote(
-        f"author:{USERNAME}"
-    )
+    print(query)
+
+    encoded_query = urllib.parse.quote(query)
 
     repositories = {}
 
@@ -113,18 +109,19 @@ def get_collaboration_repositories():
 
         url = (
             f"{API_BASE}/search/commits"
-            f"?q={encoded_username}"
+            f"?q={encoded_query}"
             f"&per_page=100"
             f"&page={page}"
         )
 
         try:
+
             data = github_get(url)
 
         except Exception as error:
 
             print(
-                "Could not search commits:"
+                "Commit search failed:"
             )
 
             print(error)
@@ -134,6 +131,11 @@ def get_collaboration_repositories():
         items = data.get(
             "items",
             []
+        )
+
+        print(
+            f"Page {page}: "
+            f"{len(items)} commits"
         )
 
         if not items:
@@ -153,12 +155,42 @@ def get_collaboration_repositories():
             )
 
             if full_name:
+
                 repositories[
                     full_name
                 ] = repository
 
         if len(items) < 100:
             break
+
+    return repositories
+
+
+# ============================================================
+# FIND COLLABORATION REPOSITORIES
+# ============================================================
+
+def get_collaboration_repositories():
+
+    repositories = {}
+
+    # Search commits authored by the user
+    author_repositories = search_commits(
+        f"author:{USERNAME}"
+    )
+
+    repositories.update(
+        author_repositories
+    )
+
+    # Search commits committed by the user
+    committer_repositories = search_commits(
+        f"committer:{USERNAME}"
+    )
+
+    repositories.update(
+        committer_repositories
+    )
 
     return list(
         repositories.values()
@@ -169,9 +201,7 @@ def get_collaboration_repositories():
 # GET REPOSITORY DETAILS
 # ============================================================
 
-def get_repository_details(
-    full_name
-):
+def get_repository_details(full_name):
 
     encoded_name = urllib.parse.quote(
         full_name,
@@ -190,9 +220,7 @@ def get_repository_details(
 # GET LANGUAGES
 # ============================================================
 
-def get_languages(
-    full_name
-):
+def get_languages(full_name):
 
     encoded_name = urllib.parse.quote(
         full_name,
@@ -213,13 +241,20 @@ def get_languages(
             data.keys()
         )
 
-    except Exception:
+    except Exception as error:
+
+        print(
+            f"Could not get languages "
+            f"for {full_name}"
+        )
+
+        print(error)
 
         return []
 
 
 # ============================================================
-# CREATE PROJECT OBJECT
+# CREATE PROJECT
 # ============================================================
 
 def create_project(
@@ -227,12 +262,12 @@ def create_project(
     project_type
 ):
 
-    full_name = repository[
+    full_name = repository.get(
         "full_name"
-    ]
+    )
 
     print(
-        f"Processing: {full_name}"
+        f"\nProcessing {full_name}"
     )
 
     details = get_repository_details(
@@ -248,14 +283,26 @@ def create_project(
         {}
     )
 
-    return {
-        "id": details.get(
-            "id"
-        ),
+    owner_login = owner.get(
+        "login"
+    )
 
-        "name": details.get(
-            "name"
-        ),
+    # Extra safety:
+    # If the repository belongs to another
+    # GitHub user, it is collaboration.
+    if owner_login and (
+        owner_login.lower()
+        != USERNAME.lower()
+    ):
+        project_type = "collaboration"
+
+    else:
+        project_type = "personal"
+
+    return {
+        "id": details.get("id"),
+
+        "name": details.get("name"),
 
         "full_name": details.get(
             "full_name"
@@ -269,9 +316,7 @@ def create_project(
             "html_url"
         ),
 
-        "owner": owner.get(
-            "login"
-        ),
+        "owner": owner_login,
 
         "owner_url": owner.get(
             "html_url"
@@ -304,6 +349,11 @@ def create_project(
         "updated_at": details.get(
             "updated_at"
         ),
+
+        "fork": details.get(
+            "fork",
+            False
+        )
     }
 
 
@@ -313,20 +363,13 @@ def create_project(
 
 def main():
 
-    print(
-        "========================================"
-    )
-
-    print(
-        "GitHub Portfolio Project Generator"
-    )
-
-    print(
-        "========================================"
-    )
+    print("\n")
+    print("=" * 60)
+    print("GitHub Portfolio Project Generator")
+    print("=" * 60)
 
     # --------------------------------------------------------
-    # MY REPOSITORIES
+    # 1. GET MY REPOSITORIES
     # --------------------------------------------------------
 
     my_repositories = (
@@ -334,25 +377,33 @@ def main():
     )
 
     print(
-        f"Found {len(my_repositories)} "
-        f"personal repositories."
+        f"\nMy repositories found: "
+        f"{len(my_repositories)}"
     )
-
-    my_repository_names = {
-        repo["full_name"]
-        for repo in my_repositories
-    }
 
     projects = []
 
+    my_repository_names = set()
+
     # --------------------------------------------------------
-    # ADD PERSONAL PROJECTS
+    # 2. ADD MY REPOSITORIES
     # --------------------------------------------------------
 
     for repository in my_repositories:
 
-        # Skip forks from "My" projects
-        # if you want only repositories you own.
+        full_name = repository.get(
+            "full_name"
+        )
+
+        if not full_name:
+            continue
+
+        my_repository_names.add(
+            full_name.lower()
+        )
+
+        # Ignore forked repositories
+        # from personal list.
         if repository.get("fork"):
             continue
 
@@ -370,14 +421,14 @@ def main():
         except Exception as error:
 
             print(
-                f"Could not process "
-                f"{repository['full_name']}"
+                f"\nCould not process "
+                f"{full_name}"
             )
 
             print(error)
 
     # --------------------------------------------------------
-    # COLLABORATION REPOSITORIES
+    # 3. FIND COLLABORATIONS
     # --------------------------------------------------------
 
     collaboration_repositories = (
@@ -385,10 +436,14 @@ def main():
     )
 
     print(
-        f"Found "
-        f"{len(collaboration_repositories)} "
-        f"repositories from your commits."
+        f"\nRepositories found through "
+        f"commit search: "
+        f"{len(collaboration_repositories)}"
     )
+
+    # --------------------------------------------------------
+    # 4. ADD COLLABORATIONS
+    # --------------------------------------------------------
 
     for repository in (
         collaboration_repositories
@@ -401,9 +456,11 @@ def main():
         if not full_name:
             continue
 
-        # Don't show your own repositories
-        # as collaborations.
-        if full_name in my_repository_names:
+        # Don't duplicate own repositories.
+        if (
+            full_name.lower()
+            in my_repository_names
+        ):
             continue
 
         try:
@@ -420,30 +477,35 @@ def main():
         except Exception as error:
 
             print(
-                f"Could not process "
+                f"\nCould not process "
                 f"{full_name}"
             )
 
             print(error)
 
     # --------------------------------------------------------
-    # REMOVE DUPLICATES
+    # 5. REMOVE DUPLICATES
     # --------------------------------------------------------
 
     unique_projects = {}
 
     for project in projects:
 
-        unique_projects[
-            project["full_name"]
-        ] = project
+        full_name = project.get(
+            "full_name"
+        )
+
+        if full_name:
+            unique_projects[
+                full_name.lower()
+            ] = project
 
     projects = list(
         unique_projects.values()
     )
 
     # --------------------------------------------------------
-    # SORT BY LAST UPDATED
+    # 6. SORT
     # --------------------------------------------------------
 
     projects.sort(
@@ -454,26 +516,31 @@ def main():
         reverse=True
     )
 
-    personal_count = len([
-        project
-        for project in projects
-        if project["projectType"]
-        == "personal"
-    ])
+    # --------------------------------------------------------
+    # 7. COUNTS
+    # --------------------------------------------------------
 
-    collaboration_count = len([
-        project
+    personal_count = sum(
+        1
         for project in projects
-        if project["projectType"]
-        == "collaboration"
-    ])
+        if project.get(
+            "projectType"
+        ) == "personal"
+    )
+
+    collaboration_count = sum(
+        1
+        for project in projects
+        if project.get(
+            "projectType"
+        ) == "collaboration"
+    )
 
     # --------------------------------------------------------
-    # CREATE OUTPUT
+    # 8. OUTPUT
     # --------------------------------------------------------
 
     output = {
-
         "username": USERNAME,
 
         "updated_at":
@@ -481,8 +548,7 @@ def main():
                 timezone.utc
             ).isoformat(),
 
-        "total":
-            len(projects),
+        "total": len(projects),
 
         "personal":
             personal_count,
@@ -495,13 +561,17 @@ def main():
     }
 
     # --------------------------------------------------------
-    # WRITE JSON
+    # 9. CREATE PUBLIC DIRECTORY
     # --------------------------------------------------------
 
     os.makedirs(
         "public",
         exist_ok=True
     )
+
+    # --------------------------------------------------------
+    # 10. WRITE JSON
+    # --------------------------------------------------------
 
     with open(
         "public/projects.json",
@@ -516,21 +586,23 @@ def main():
             ensure_ascii=False
         )
 
-    print()
+    # --------------------------------------------------------
+    # 11. FINAL REPORT
+    # --------------------------------------------------------
+
+    print("\n")
+    print("=" * 60)
+    print("SUCCESS")
+    print("=" * 60)
+
     print(
-        "========================================"
+        f"Total projects: "
+        f"{len(projects)}"
     )
 
     print(
-        "projects.json created successfully!"
-    )
-
-    print(
-        f"Total: {len(projects)}"
-    )
-
-    print(
-        f"Personal: {personal_count}"
+        f"My projects: "
+        f"{personal_count}"
     )
 
     print(
@@ -539,8 +611,14 @@ def main():
     )
 
     print(
-        "========================================"
+        "\nCreated:"
     )
+
+    print(
+        "public/projects.json"
+    )
+
+    print("=" * 60)
 
 
 if __name__ == "__main__":

@@ -1,10 +1,10 @@
 name: Update Portfolio Projects
 
 on:
+  workflow_dispatch:
+
   schedule:
     - cron: "0 0 * * *"
-
-  workflow_dispatch:
 
   push:
     branches:
@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -33,11 +34,11 @@ jobs:
         run: |
           python scripts/generate_projects.py
 
-      - name: Check generated file
+      - name: Show generated projects
         run: |
           cat public/projects.json
 
-      - name: Commit updated projects.json
+      - name: Commit projects.json
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -45,7 +46,7 @@ jobs:
           git add public/projects.json
 
           if git diff --cached --quiet; then
-            echo "No changes to projects.json"
+            echo "No changes"
           else
             git commit -m "chore: update GitHub projects"
             git push
