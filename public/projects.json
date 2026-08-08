@@ -1,9 +1,9 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-08-08T11:31:09.720198+00:00",
+  "updated_at": "2026-08-08T11:38:41.686904+00:00",
   "total": 8,
-  "personal": 8,
-  "collaborations": 0,
+  "personal": 6,
+  "collaborations": 2,
   "projects": [
     {
       "id": 1304108492,
@@ -24,7 +24,8 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-08-08T11:31:02Z"
+      "updated_at": "2026-08-08T11:38:34Z",
+      "fork": false
     },
     {
       "id": 1318271922,
@@ -44,7 +45,8 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-08-03T10:00:13Z"
+      "updated_at": "2026-08-03T10:00:13Z",
+      "fork": false
     },
     {
       "id": 1308988521,
@@ -64,8 +66,9 @@
       "forks": 0,
       "watchers": 0,
       "issues": 0,
-      "projectType": "personal",
-      "updated_at": "2026-08-02T12:20:05Z"
+      "projectType": "collaboration",
+      "updated_at": "2026-08-02T12:20:05Z",
+      "fork": false
     },
     {
       "id": 1244441237,
@@ -84,7 +87,8 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-06-12T14:48:16Z"
+      "updated_at": "2026-06-12T14:48:16Z",
+      "fork": false
     },
     {
       "id": 1138048793,
@@ -104,8 +108,9 @@
       "forks": 0,
       "watchers": 0,
       "issues": 0,
-      "projectType": "personal",
-      "updated_at": "2026-04-02T16:36:26Z"
+      "projectType": "collaboration",
+      "updated_at": "2026-04-02T16:36:26Z",
+      "fork": false
     },
     {
       "id": 893066646,
@@ -121,7 +126,8 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-03-18T14:58:22Z"
+      "updated_at": "2026-03-18T14:58:22Z",
+      "fork": false
     },
     {
       "id": 1184916609,
@@ -141,7 +147,8 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-03-18T08:24:43Z"
+      "updated_at": "2026-03-18T08:24:43Z",
+      "fork": false
     },
     {
       "id": 871108884,
@@ -157,7 +164,8 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2024-10-11T09:36:29Z"
+      "updated_at": "2024-10-11T09:36:29Z",
+      "fork": false
     }
   ]
 }
