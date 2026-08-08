@@ -2,8 +2,8 @@ import json
 import os
 import urllib.parse
 import urllib.request
+import urllib.error
 from datetime import datetime, timezone
-
 
 USERNAME = os.environ["GITHUB_USERNAME"]
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
