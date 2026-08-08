@@ -1,0 +1,163 @@
+{
+  "username": "24AIML048-Vidhi",
+  "updated_at": "2026-08-08T11:29:01.551391+00:00",
+  "total": 8,
+  "personal": 8,
+  "collaborations": 0,
+  "projects": [
+    {
+      "id": 1304108492,
+      "name": "24AIML048_my_portfolio",
+      "full_name": "24AIML048-Vidhi/24AIML048_my_portfolio",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/24AIML048_my_portfolio",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [
+        "JavaScript",
+        "Python",
+        "CSS",
+        "HTML"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-08-08T11:28:48Z"
+    },
+    {
+      "id": 1318271922,
+      "name": "Task-Manager",
+      "full_name": "24AIML048-Vidhi/Task-Manager",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/Task-Manager",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [
+        "JavaScript",
+        "CSS",
+        "HTML"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-08-03T10:00:13Z"
+    },
+    {
+      "id": 1308988521,
+      "name": "RivalLens",
+      "full_name": "JanviPrajapati0210/RivalLens",
+      "description": null,
+      "html_url": "https://github.com/JanviPrajapati0210/RivalLens",
+      "owner": "JanviPrajapati0210",
+      "owner_url": "https://github.com/JanviPrajapati0210",
+      "languages": [
+        "Python",
+        "JavaScript",
+        "CSS",
+        "HTML"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-08-02T12:20:05Z"
+    },
+    {
+      "id": 1244441237,
+      "name": "AI_SupplyChain_Risk",
+      "full_name": "24AIML048-Vidhi/AI_SupplyChain_Risk",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/AI_SupplyChain_Risk",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [
+        "Jupyter Notebook",
+        "Python"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-06-12T14:48:16Z"
+    },
+    {
+      "id": 1138048793,
+      "name": "SkillUpgrade",
+      "full_name": "JanviPrajapati0210/SkillUpgrade",
+      "description": null,
+      "html_url": "https://github.com/JanviPrajapati0210/SkillUpgrade",
+      "owner": "JanviPrajapati0210",
+      "owner_url": "https://github.com/JanviPrajapati0210",
+      "languages": [
+        "Python",
+        "CSS",
+        "HTML",
+        "JavaScript"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-04-02T16:36:26Z"
+    },
+    {
+      "id": 893066646,
+      "name": "Chatbot",
+      "full_name": "24AIML048-Vidhi/Chatbot",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/Chatbot",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-03-18T14:58:22Z"
+    },
+    {
+      "id": 1184916609,
+      "name": "sentiment-analysis-project",
+      "full_name": "24AIML048-Vidhi/sentiment-analysis-project",
+      "description": "Sentiment Analysis using Natural Language Processing and Machine Learning with web-based interface developed using Flask and HTML/CSS.",
+      "html_url": "https://github.com/24AIML048-Vidhi/sentiment-analysis-project",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [
+        "CSS",
+        "Python",
+        "HTML"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-03-18T08:24:43Z"
+    },
+    {
+      "id": 871108884,
+      "name": "git-session",
+      "full_name": "24AIML048-Vidhi/git-session",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/git-session",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2024-10-11T09:36:29Z"
+    }
+  ]
+}
