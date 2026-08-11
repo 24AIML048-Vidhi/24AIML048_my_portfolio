@@ -1,10 +1,32 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-08-10T01:42:35.361612+00:00",
+  "updated_at": "2026-08-11T01:39:29.203873+00:00",
   "total": 8,
   "personal": 6,
   "collaborations": 2,
   "projects": [
+    {
+      "id": 1308988521,
+      "name": "RivalLens",
+      "full_name": "JanviPrajapati0210/RivalLens",
+      "description": null,
+      "html_url": "https://github.com/JanviPrajapati0210/RivalLens",
+      "owner": "JanviPrajapati0210",
+      "owner_url": "https://github.com/JanviPrajapati0210",
+      "languages": [
+        "Python",
+        "JavaScript",
+        "CSS",
+        "HTML"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "collaboration",
+      "updated_at": "2026-08-10T06:55:50Z",
+      "fork": false
+    },
     {
       "id": 1304108492,
       "name": "24AIML048_my_portfolio",
@@ -24,7 +46,7 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-08-09T01:39:34Z",
+      "updated_at": "2026-08-10T01:42:42Z",
       "fork": false
     },
     {
@@ -46,28 +68,6 @@
       "issues": 0,
       "projectType": "personal",
       "updated_at": "2026-08-03T10:00:13Z",
-      "fork": false
-    },
-    {
-      "id": 1308988521,
-      "name": "RivalLens",
-      "full_name": "JanviPrajapati0210/RivalLens",
-      "description": null,
-      "html_url": "https://github.com/JanviPrajapati0210/RivalLens",
-      "owner": "JanviPrajapati0210",
-      "owner_url": "https://github.com/JanviPrajapati0210",
-      "languages": [
-        "Python",
-        "JavaScript",
-        "CSS",
-        "HTML"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "watchers": 0,
-      "issues": 0,
-      "projectType": "collaboration",
-      "updated_at": "2026-08-02T12:20:05Z",
       "fork": false
     },
     {
