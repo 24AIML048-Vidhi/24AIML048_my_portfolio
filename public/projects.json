@@ -1,10 +1,32 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-08-12T01:50:37.732850+00:00",
+  "updated_at": "2026-08-13T01:52:27.287374+00:00",
   "total": 8,
   "personal": 6,
   "collaborations": 2,
   "projects": [
+    {
+      "id": 1304108492,
+      "name": "24AIML048_my_portfolio",
+      "full_name": "24AIML048-Vidhi/24AIML048_my_portfolio",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/24AIML048_my_portfolio",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [
+        "JavaScript",
+        "Python",
+        "CSS",
+        "HTML"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-08-12T01:50:42Z",
+      "fork": false
+    },
     {
       "id": 1308988521,
       "name": "RivalLens",
@@ -25,28 +47,6 @@
       "issues": 0,
       "projectType": "collaboration",
       "updated_at": "2026-08-11T10:24:29Z",
-      "fork": false
-    },
-    {
-      "id": 1304108492,
-      "name": "24AIML048_my_portfolio",
-      "full_name": "24AIML048-Vidhi/24AIML048_my_portfolio",
-      "description": null,
-      "html_url": "https://github.com/24AIML048-Vidhi/24AIML048_my_portfolio",
-      "owner": "24AIML048-Vidhi",
-      "owner_url": "https://github.com/24AIML048-Vidhi",
-      "languages": [
-        "JavaScript",
-        "Python",
-        "CSS",
-        "HTML"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "watchers": 0,
-      "issues": 0,
-      "projectType": "personal",
-      "updated_at": "2026-08-11T01:39:37Z",
       "fork": false
     },
     {
