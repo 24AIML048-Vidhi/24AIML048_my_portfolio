@@ -1,20 +1,19 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-08-17T01:10:42.628301+00:00",
+  "updated_at": "2026-08-18T01:08:23.252833+00:00",
   "total": 8,
   "personal": 6,
   "collaborations": 2,
   "projects": [
     {
-      "id": 1308988521,
-      "name": "RivalLens",
-      "full_name": "JanviPrajapati0210/RivalLens",
+      "id": 1318271922,
+      "name": "Task-Manager",
+      "full_name": "24AIML048-Vidhi/Task-Manager",
       "description": null,
-      "html_url": "https://github.com/JanviPrajapati0210/RivalLens",
-      "owner": "JanviPrajapati0210",
-      "owner_url": "https://github.com/JanviPrajapati0210",
+      "html_url": "https://github.com/24AIML048-Vidhi/Task-Manager",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
       "languages": [
-        "Python",
         "JavaScript",
         "CSS",
         "HTML"
@@ -23,8 +22,8 @@
       "forks": 0,
       "watchers": 0,
       "issues": 0,
-      "projectType": "collaboration",
-      "updated_at": "2026-08-16T11:39:38Z",
+      "projectType": "personal",
+      "updated_at": "2026-08-17T13:47:45Z",
       "fork": false
     },
     {
@@ -46,18 +45,19 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-08-16T01:13:30Z",
+      "updated_at": "2026-08-17T01:10:47Z",
       "fork": false
     },
     {
-      "id": 1318271922,
-      "name": "Task-Manager",
-      "full_name": "24AIML048-Vidhi/Task-Manager",
+      "id": 1308988521,
+      "name": "RivalLens",
+      "full_name": "JanviPrajapati0210/RivalLens",
       "description": null,
-      "html_url": "https://github.com/24AIML048-Vidhi/Task-Manager",
-      "owner": "24AIML048-Vidhi",
-      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "html_url": "https://github.com/JanviPrajapati0210/RivalLens",
+      "owner": "JanviPrajapati0210",
+      "owner_url": "https://github.com/JanviPrajapati0210",
       "languages": [
+        "Python",
         "JavaScript",
         "CSS",
         "HTML"
@@ -66,8 +66,8 @@
       "forks": 0,
       "watchers": 0,
       "issues": 0,
-      "projectType": "personal",
-      "updated_at": "2026-08-03T10:00:13Z",
+      "projectType": "collaboration",
+      "updated_at": "2026-08-16T11:39:38Z",
       "fork": false
     },
     {
