@@ -1,10 +1,31 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-08-24T01:12:36.395436+00:00",
-  "total": 8,
-  "personal": 6,
+  "updated_at": "2026-08-25T01:10:40.451338+00:00",
+  "total": 9,
+  "personal": 7,
   "collaborations": 2,
   "projects": [
+    {
+      "id": 1344649063,
+      "name": "itue301-exam-24aiml048-C",
+      "full_name": "24AIML048-Vidhi/itue301-exam-24aiml048-C",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/itue301-exam-24aiml048-C",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [
+        "JavaScript",
+        "CSS",
+        "HTML"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-08-24T08:41:53Z",
+      "fork": false
+    },
     {
       "id": 1304108492,
       "name": "24AIML048_my_portfolio",
@@ -24,7 +45,7 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-08-23T01:15:03Z",
+      "updated_at": "2026-08-24T01:12:47Z",
       "fork": false
     },
     {
