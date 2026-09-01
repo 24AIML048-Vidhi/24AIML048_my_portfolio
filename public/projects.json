@@ -1,31 +1,10 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-08-31T03:50:37.502534+00:00",
+  "updated_at": "2026-09-01T03:43:17.886068+00:00",
   "total": 9,
   "personal": 7,
   "collaborations": 2,
   "projects": [
-    {
-      "id": 1318271922,
-      "name": "Task-Manager",
-      "full_name": "24AIML048-Vidhi/Task-Manager",
-      "description": null,
-      "html_url": "https://github.com/24AIML048-Vidhi/Task-Manager",
-      "owner": "24AIML048-Vidhi",
-      "owner_url": "https://github.com/24AIML048-Vidhi",
-      "languages": [
-        "JavaScript",
-        "HTML",
-        "CSS"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "watchers": 0,
-      "issues": 0,
-      "projectType": "personal",
-      "updated_at": "2026-08-30T05:51:11Z",
-      "fork": false
-    },
     {
       "id": 1304108492,
       "name": "24AIML048_my_portfolio",
@@ -45,7 +24,28 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-08-30T03:48:42Z",
+      "updated_at": "2026-08-31T03:51:19Z",
+      "fork": false
+    },
+    {
+      "id": 1318271922,
+      "name": "Task-Manager",
+      "full_name": "24AIML048-Vidhi/Task-Manager",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/Task-Manager",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-08-30T05:51:11Z",
       "fork": false
     },
     {
