@@ -1,10 +1,32 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-09-14T03:31:39.623783+00:00",
-  "total": 9,
+  "updated_at": "2026-09-15T03:32:42.193432+00:00",
+  "total": 10,
   "personal": 7,
-  "collaborations": 2,
+  "collaborations": 3,
   "projects": [
+    {
+      "id": 1367442948,
+      "name": "bob-ai-hackathon-TechTitans",
+      "full_name": "JanviPrajapati0210/bob-ai-hackathon-TechTitans",
+      "description": null,
+      "html_url": "https://github.com/JanviPrajapati0210/bob-ai-hackathon-TechTitans",
+      "owner": "JanviPrajapati0210",
+      "owner_url": "https://github.com/JanviPrajapati0210",
+      "languages": [
+        "JavaScript",
+        "Python",
+        "CSS",
+        "HTML"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "collaboration",
+      "updated_at": "2026-09-15T03:20:22Z",
+      "fork": false
+    },
     {
       "id": 1304108492,
       "name": "24AIML048_my_portfolio",
@@ -24,7 +46,7 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-09-13T03:20:05Z",
+      "updated_at": "2026-09-14T03:31:44Z",
       "fork": false
     },
     {
