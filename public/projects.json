@@ -1,10 +1,30 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-10-05T04:13:17.845533+00:00",
-  "total": 10,
-  "personal": 7,
+  "updated_at": "2026-10-06T05:01:42.174734+00:00",
+  "total": 11,
+  "personal": 8,
   "collaborations": 3,
   "projects": [
+    {
+      "id": 1405169771,
+      "name": "ResumeForge",
+      "full_name": "24AIML048-Vidhi/ResumeForge",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/ResumeForge",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [
+        "Jupyter Notebook",
+        "Python"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-10-05T08:13:28Z",
+      "fork": false
+    },
     {
       "id": 1304108492,
       "name": "24AIML048_my_portfolio",
@@ -24,7 +44,7 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-10-04T04:28:35Z",
+      "updated_at": "2026-10-05T04:13:22Z",
       "fork": false
     },
     {
