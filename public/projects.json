@@ -1,10 +1,32 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-10-17T03:07:00.151186+00:00",
+  "updated_at": "2026-10-18T03:09:39.092191+00:00",
   "total": 13,
   "personal": 10,
   "collaborations": 3,
   "projects": [
+    {
+      "id": 1304108492,
+      "name": "24AIML048_my_portfolio",
+      "full_name": "24AIML048-Vidhi/24AIML048_my_portfolio",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/24AIML048_my_portfolio",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [
+        "JavaScript",
+        "Python",
+        "CSS",
+        "HTML"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-10-17T03:07:05Z",
+      "fork": false
+    },
     {
       "id": 1420404122,
       "name": "student_companion_app",
@@ -29,28 +51,6 @@
       "issues": 0,
       "projectType": "personal",
       "updated_at": "2026-10-16T10:34:37Z",
-      "fork": false
-    },
-    {
-      "id": 1304108492,
-      "name": "24AIML048_my_portfolio",
-      "full_name": "24AIML048-Vidhi/24AIML048_my_portfolio",
-      "description": null,
-      "html_url": "https://github.com/24AIML048-Vidhi/24AIML048_my_portfolio",
-      "owner": "24AIML048-Vidhi",
-      "owner_url": "https://github.com/24AIML048-Vidhi",
-      "languages": [
-        "JavaScript",
-        "Python",
-        "CSS",
-        "HTML"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "watchers": 0,
-      "issues": 0,
-      "projectType": "personal",
-      "updated_at": "2026-10-16T03:16:23Z",
       "fork": false
     },
     {
