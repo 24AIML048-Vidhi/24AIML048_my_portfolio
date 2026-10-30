@@ -1,10 +1,32 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-10-29T04:31:25.745027+00:00",
+  "updated_at": "2026-10-30T04:31:06.669468+00:00",
   "total": 14,
   "personal": 11,
   "collaborations": 3,
   "projects": [
+    {
+      "id": 1304108492,
+      "name": "24AIML048_my_portfolio",
+      "full_name": "24AIML048-Vidhi/24AIML048_my_portfolio",
+      "description": null,
+      "html_url": "https://github.com/24AIML048-Vidhi/24AIML048_my_portfolio",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "languages": [
+        "JavaScript",
+        "Python",
+        "CSS",
+        "HTML"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "issues": 0,
+      "projectType": "personal",
+      "updated_at": "2026-10-29T04:31:30Z",
+      "fork": false
+    },
     {
       "id": 1436620385,
       "name": "MediReminder",
@@ -29,28 +51,6 @@
       "issues": 0,
       "projectType": "personal",
       "updated_at": "2026-10-28T05:02:22Z",
-      "fork": false
-    },
-    {
-      "id": 1304108492,
-      "name": "24AIML048_my_portfolio",
-      "full_name": "24AIML048-Vidhi/24AIML048_my_portfolio",
-      "description": null,
-      "html_url": "https://github.com/24AIML048-Vidhi/24AIML048_my_portfolio",
-      "owner": "24AIML048-Vidhi",
-      "owner_url": "https://github.com/24AIML048-Vidhi",
-      "languages": [
-        "JavaScript",
-        "Python",
-        "CSS",
-        "HTML"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "watchers": 0,
-      "issues": 0,
-      "projectType": "personal",
-      "updated_at": "2026-10-28T04:09:03Z",
       "fork": false
     },
     {
