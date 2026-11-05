@@ -1,30 +1,30 @@
 {
   "username": "24AIML048-Vidhi",
-  "updated_at": "2026-11-04T04:56:53.664035+00:00",
+  "updated_at": "2026-11-05T05:16:31.919699+00:00",
   "total": 14,
   "personal": 11,
   "collaborations": 3,
   "projects": [
     {
-      "id": 1318271922,
-      "name": "Task-Manager",
-      "full_name": "24AIML048-Vidhi/Task-Manager",
+      "id": 1308988521,
+      "name": "RivalLens",
+      "full_name": "JanviPrajapati0210/RivalLens",
       "description": null,
-      "html_url": "https://github.com/24AIML048-Vidhi/Task-Manager",
-      "owner": "24AIML048-Vidhi",
-      "owner_url": "https://github.com/24AIML048-Vidhi",
+      "html_url": "https://github.com/JanviPrajapati0210/RivalLens",
+      "owner": "JanviPrajapati0210",
+      "owner_url": "https://github.com/JanviPrajapati0210",
       "languages": [
+        "Python",
         "JavaScript",
-        "HTML",
         "CSS",
-        "Dockerfile"
+        "HTML"
       ],
       "stars": 0,
       "forks": 0,
       "watchers": 0,
       "issues": 0,
-      "projectType": "personal",
-      "updated_at": "2026-11-03T15:37:19Z",
+      "projectType": "collaboration",
+      "updated_at": "2026-11-04T09:09:39Z",
       "fork": false
     },
     {
@@ -46,29 +46,29 @@
       "watchers": 0,
       "issues": 0,
       "projectType": "personal",
-      "updated_at": "2026-11-03T05:28:20Z",
+      "updated_at": "2026-11-04T04:56:58Z",
       "fork": false
     },
     {
-      "id": 1308988521,
-      "name": "RivalLens",
-      "full_name": "JanviPrajapati0210/RivalLens",
+      "id": 1318271922,
+      "name": "Task-Manager",
+      "full_name": "24AIML048-Vidhi/Task-Manager",
       "description": null,
-      "html_url": "https://github.com/JanviPrajapati0210/RivalLens",
-      "owner": "JanviPrajapati0210",
-      "owner_url": "https://github.com/JanviPrajapati0210",
+      "html_url": "https://github.com/24AIML048-Vidhi/Task-Manager",
+      "owner": "24AIML048-Vidhi",
+      "owner_url": "https://github.com/24AIML048-Vidhi",
       "languages": [
-        "Python",
         "JavaScript",
+        "HTML",
         "CSS",
-        "HTML"
+        "Dockerfile"
       ],
       "stars": 0,
       "forks": 0,
       "watchers": 0,
       "issues": 0,
-      "projectType": "collaboration",
-      "updated_at": "2026-11-02T14:42:00Z",
+      "projectType": "personal",
+      "updated_at": "2026-11-03T15:37:19Z",
       "fork": false
     },
     {
